@@ -27,13 +27,11 @@
 *   **`Exploration_Engine.md` (New Document):**
     *   [ ] Write this document, defining navigation, discovery, and the "Euclidean Betrayal" system.
     *   [ ] Formally design the **"Ambient Psychology"** and **Hierarchical Choice** systems.
-    *   [ ] Write this document, defining navigation, discovery, and the "Euclidean Betrayal" system.
-    *   [ ] Formally design the **"Ambient Psychology"** and **Hierarchical Choice** systems.
-    *   [ ] **(NEW)** Formally design and document the **"Off-Screen Resolution System"** for managing autonomous companion encounters.
 
 *   **`Narrative_Engine.md` (New Document):**
     *   [ ] **(CRITICAL PRIORITY)** Define the **`Scene Requirement Data Structure`** (the "Intent Packet").
     *   [ ] Detail the Micro-Template and Variable Dictionary architecture.
+    *   [ ] **(NEW)** Under the "Micro-Template Architecture" task, add a specific requirement to design text templates that can **dynamically alter their descriptions** based on the presence of `special_senses` tags, particularly for synesthesia.
 
 ### **1.3 Core Entity Systems**
 
@@ -49,6 +47,8 @@
     *   [ ] Add a design note clarifying that the **`Fixation Matrix` is the Subject's equivalent of a `Nature` component.**
     *   [ ] Add the `Climax State Component` to the `Subject State Framework`.
     *   [ ] Formally define the `Psychological Integration` and `Subject Psychology Output Interface`.
+    *   [ ] **(NEW)** Add a design note to consider creating a **Subject** whose primary form of attack or corruption is the application of a **Synesthesia `Corruption Vector`**.
+
 
 *   **`Hazard_Systems.md` (New Document):**
     *   [ ] Write this document, detailing the **Modular Hazard Component Library**.
@@ -63,7 +63,11 @@
         *   [ ] The rules for **Keyholding**.
         *   [ ] The definition and application of **Consent Status** (`CONSENTING` vs. `FORCED`).
         *   [ ] The design principle that the controlling entity's nature determines the **type of equipment selected**.
+    *   [ ] Design and document the **"Off-Screen Resolution System."**
     *   [ ] **(HIGH PRIORITY)** Design the **"Player Agency vs. Transformation" Framework** for resisting physical changes.
+    *   [ ] **(NEW)** Design the **Synesthesia System** as a gameplay mechanic:
+        *   [ ] Formally add **Synesthesia** as a potential **`Corruption Perk`**, likely resulting from the `Enthrall` or `Metamorphosis` tracks.
+        *   [ ] Design a temporary **`Status Effect`** that can induce a chaotic, short-term version of synesthesia.
 
 *   **`Facility_Environment_Systems.md` (Major Refactor):**
     *   [ ] Strip out all navigation and exploration mechanics.
@@ -81,36 +85,48 @@
 
 *   **`Character_Core_Systems_Library.md` (New Document):**
     *   [ ] Create this new document to serve as the "database" for the Character Core Systems.
+
+    *   [ ] Create the **`Senses` Library:**
+        *   [ ] Define the master list of all valid **`special_senses` tags**, including all planned variants of synesthesia (e.g., `synesthesia_audio_visual`, `synesthesia_audio_tactile`, `synesthesia_thermo_erotic`).
+
     *   [ ] Define **Companion Nature** Libraries
         *   [ ] **`Core Drives` Library:** Create the master list of all valid `core_drives` (e.g., "Seek_Knowledge," "Ensure_Ally_Safety," "Acquire_Power").
         *   [ ] **`Default Responses` Library:** Create the master list of all valid `default_responses` and their sub-properties (e.g., `stress_response` options: "Analyze," "Action," "Freeze").
         *   [ ] **`Behavioral Weights` Library:** Define the master list of all `Intent` categories that can be weighted (e.g., "Aggressive_Actions," "Supportive_Actions," "Investigative_Actions").
         *   [ ] **`Corruption Affinity` Library:** Confirm that the valid keys for this dictionary are the seven official `Corruption_Track` names.
+
     *   [ ] Create the **`Relationship Progression` Library:**
         *   [ ] Define the master list of all valid relationship-modifying events (e.g., `life_saving_action`, `minor_disagreement`).
         *   [ ] Assign the specific, tweakable numerical values for each event.
+
     *   [ ] Create the **`Control Comfort` Library:**
         *   [ ] Define the precise, time-based numerical values that govern the progression rate of `control_comfort` for each relationship tier (`LOYAL`, `COOPERATIVE`, etc.).
+
     *   [ ] Create the **`Arousal System` Library:**
         *   [ ] Define the master list of all valid positive and negative **`Arousal Pressure Sources`** (e.g., `pressure_denial`, `pressure_pheromones`, `pressure_dysphoria`).
         *   [ ] Assign the specific, tweakable numerical values for each pressure source.
         *   [ ] Document the master list of **`Relief Mechanisms`** and their default effectiveness values.
+
     *   [ ] Create the **`Climax System` Library:**
         *   [ ] Define the master list of all valid **`Climax_Type`** tags (e.g., `Pleasure`, `Stress_Relief`, `Forced`).
         *   [ ] Document the default **`Post-Climax State` Status Effects** associated with each climax type, including their mechanical effects and durations.
         *   [ ] Define the standard **`climax_cooldown` duration** as a tweakable value.
-    *   [ ] Create the **`Eroticism Profile` Library:**
-        *   [ ] Define the master list of all valid **`Content_Flag` keys** that can be tracked in an `Eroticism Profile` (e.g., `watersports`, `bondage_equipment`, `worship_scenarios`). This list will likely be derived from the EIV framework.
-        *   [ ] Document the default **`Affinity Score` modifiers** for key in-game events (e.g., `positive_consensual_climax_modifier: +2.0`, `traumatic_forced_climax_modifier: -3.0`).
-        *   [ ] For each `Corruption` threshold that affects the profile, define the specific `Content_Flag` it targets and the numerical value of the forced modification.
-    *   [ ] Create the **`Corruption Theme` Library:**
-        *   [ ] Define the data structure for a **`Corruption Theme`** (e.g., "Hyena," "Botanical").
-        *   [ ] For each theme, create data blocks for each of the seven **`Corruption Tracks`**.
-        *   [ ] Within each track, create entries for each **`Threshold (1-10)`**, detailing the specific, permanent CSF modifications that are applied at that level of accommodation (e.g., the specific `Anatomy Profile` changes for `Metamorphosis`, the `Behavioral Weight` shifts for `Dominion`, etc.).
+
     *   [ ] Create the **`Refractory Period` Library:**
         *   [ ] Define the **`Base_Duration`** value.
         *   [ ] Document the formula for calculating the final duration, ensuring it includes both the character's **`refractory_rate`** and a modifier based on their **`Current Arousal` at the moment of climax**.
         *   [ ] Detail the specific mechanical effects of the `Refractory Period` status effect.
+
+    *   [ ] Create the **`Eroticism Profile` Library:**
+        *   [ ] Define the master list of all valid **`Content_Flag` keys** that can be tracked in an `Eroticism Profile` (e.g., `watersports`, `bondage_equipment`, `worship_scenarios`). This list will likely be derived from the EIV framework.
+        *   [ ] Document the default **`Affinity Score` modifiers** for key in-game events (e.g., `positive_consensual_climax_modifier: +2.0`, `traumatic_forced_climax_modifier: -3.0`).
+        *   [ ] For each `Corruption` threshold that affects the profile, define the specific `Content_Flag` it targets and the numerical value of the forced modification.
+
+    *   [ ] Create the **`Corruption Theme` Library:**
+        *   [ ] Define the data structure for a **`Corruption Theme`** (e.g., "Hyena," "Botanical").
+        *   [ ] For each theme, create data blocks for each of the seven **`Corruption Tracks`**.
+        *   [ ] Within each track, create entries for each **`Threshold (1-10)`**, detailing the specific, permanent CSF modifications that are applied at that level of accommodation (e.g., the specific `Anatomy Profile` changes for `Metamorphosis`, the `Behavioral Weight` shifts for `Dominion`, etc.).
+
     *   [ ] Create the **`Psychological Integration` Library:**
         *   [ ] Define the specific percentage ranges for the **4-Stage Meter Psychology** (e.g., `Crisis: 0%`, `Low: 1-24%`, etc.) as tweakable constants.
         *   [ ] Document the baseline **"meta-weights"** for the **State Priority Hierarchy**, defining the default multiplicative power of each psychological driver (e.g., `Meter_Crisis_Weight`, `Compulsive_Arousal_Weight`).

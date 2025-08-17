@@ -284,12 +284,14 @@ This is the definitive list of components that constitute a character. A charact
         *   `territorial_marking_capacity` (Boolean): A flag indicating if the character can leave persistent pheromonal marks.
         *   `breeding_appeal` (Derived Magnitude): The final, calculated value used by Subjects for targeting.
 *   **`senses`**
-    *   **Description:** A container for the character's sensory capabilities.
+    *   **Description:** A container for the character's sensory capabilities. The `special_senses` list is the primary hook for supernatural or corrupted perceptual changes, such as **Synesthesia**.
     *   **Properties:**
         *   `vision` ({acuity: Magnitude, tags: List}): Defines sight, including supernatural abilities like "Night_Vision".
         *   `hearing` ({acuity: Magnitude, tags: List}): Defines hearing, including supernatural abilities like "Echolocation".
         *   `scent` ({acuity: Magnitude, tags: List}): Defines smell, including supernatural abilities like "Pheromone_Analysis".
         *   `touch` ({sensitivity: Sensitivity, tags: List}): Defines tactile sense, a key input for arousal and horror.
+        *   `special_senses` (List of tags): Defines any transcendent or altered senses. 
+            *   **Examples: `["synesthesia_audio_visual", "synesthesia_thermo_erotic"]`**.
 
 ##### **Targetable Human Components**
 
