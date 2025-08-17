@@ -3,6 +3,7 @@
 **Purpose:** This document is a living reference and companion to the `Development_Roadmap`. It contains the core concepts, design philosophies, and initial brainstorming for systems that are still in development. It serves as the primary source material for writing the final, clean documentation for each pending task.
 
 ---
+
 ### **Notes for `Exploration_Engine.md`**
 
 **1. The "Ambient Psychology" System**
@@ -18,6 +19,7 @@
 *   **Core Concept:** When a companion is exploring independently, they can trigger their own encounters. These are resolved via a lightweight, abstracted "Simulated Encounter" by the `Core_Engine`. Outcomes are logged and reported to the player, and can create "Intervention" opportunities.
 
 ---
+
 ### **Notes for `Subject_Core_Systems.md`**
 
 **5. The "One Subject at a Time" Rule**
@@ -43,6 +45,7 @@
 *   **Core Concept:** Subjects have predefined relationships with one another (Rivalries, Synergies, Indifference). These dynamics can affect the state of the facility. A player might find a room wrecked because two rival Subjects had a territorial dispute, or find a Hazard that has been augmented by the influence of a nearby Subject.
 
 ---
+
 ### **Notes for `Hazard_Systems.md`**
 
 **10. The Modular Hazard System**
@@ -50,6 +53,7 @@
 *   **Core Concept:** A Hazard is built from a library of modular components (Core Profile, Trigger, Behavior, Effect). The **"Psychology Shim"** is a lightweight translator that allows a Hazard's static, pre-defined profile to be formatted into a valid `PsychologyOutput` that the `Encounter_Engine` can understand.
 
 ---
+
 ### **Notes for `Character_Progression_Systems.md`**
 
 **11. The "Clothing as Defensive Bonus" System**
@@ -61,6 +65,7 @@
 *   **Core Concept:** Resisting a `Corruption Vector` is a choice with a cost. It may require spending a rare resource, or inflicting a large amount of `Stability` damage as the character's mind fights their body. Conversely, *accepting* the transformation might prevent the `Stability` damage, creating a tempting choice between preserving the body or the mind.
 
 ---
+
 ### **Notes for `Facility_Environment_Systems.md`**
 
 **13. Facility Medical Services Integration**
@@ -68,6 +73,7 @@
 *   **Core Concept:** The medical bay is a "body shop," not a hospital. Physical transformations can be reversed, but always at a significant cost (rare resources, favors, completing dangerous tasks). Crucially, the psychological and corrupting effects are permanent. This creates a dependency loop where the player is tempted to accept "useful" corruptions, believing they can just "fix it later," drawing them deeper into the facility's control.
 
 ---
+
 ### **Notes for `Story_Framework.md`**
 
 **14. The `Live_Documentation_System`**
@@ -75,17 +81,48 @@
 *   **Core Concept:** As the player performs actions and their state changes, the game generates in-universe "documentation" about them in real-time. After a particularly traumatic encounter, a "Clinical Observation Report" might appear in the player's log. After a character develops a new corruption, a new, redacted "Specimen Profile" might be created for them, written from the cold, detached perspective of The Other or The Architect.
 
 ---
+
+### **Notes for `Character_Core_Systems.md`**
+
+**15. The "Affinity-Weighted Expression" Model for Branching Corruption**
+*   **Problem Solved:** How to model branching corruption tracks (like `Dominion`) in a way that is psychologically authentic, works for autonomous companions, and allows for non-binary states (e.g., being both a Voyeur and an Exhibitionist). Replaces the old, rigid "binary flip" idea.
+*   **Core Concept:** A character's progress on a branching track is measured with a single **`Corruption Threshold`** (representing their knowledge/potential in that domain). Their expression of that knowledge is determined by separate, dynamic **`Affinity Scores`** for each branch (e.g., `Dominant Affinity` vs. `Submissive Affinity`).
+    *   `Character Nature` provides the starting affinities.
+    *   In-game experiences (positive/negative reinforcement) modify these scores over time.
+    *   The `Psychology System` uses the affinity scores as a primary weight to determine which type of action to take.
+    *   A "heel-face turn" is now an organic, psychologically-driven process where a character's affinity for an opposing expression grows through experience, rather than a simple binary switch.
+
+---
+
 ### **Reference Notes for Completed Systems**
 *(Core philosophies of complex, recently designed systems, preserved here for high-level reference.)*
 
-**15. The "Slot & Hijack" Principle for Anatomy** (Ref: `Character_Core_Systems.md`)
+**16. The "Slot & Hijack" Principle for Anatomy** (Ref: `Character_Core_Systems.md`)
 *   **Concept:** To maintain a body horror theme, character anatomy has defined "slots" for major features. Corruption can add to empty slots, but a "Hijack" transformation will consume and replace an existing body part, representing a horrifying violation of the human template.
 
-**16. The "Creeping Transformation" & `Corruption Vector`** (Ref: `Character_Core_Systems.md`)
+**17. The "Creeping Transformation" & `Corruption Vector`** (Ref: `Character_Core_Systems.md`)
 *   **Concept:** Corruption is not instantaneous. It applies a persistent **`Corruption Vector`** (an "instruction packet") to a character. This vector then applies its thematic change in small, terrifying increments at set intervals, allowing a desperate window for the player to try and intervene.
 
-**17. The `Eroticism Profile` & "Conditioning" Model** (Ref: `Character_Core_Systems.md`)
+**18. The `Eroticism Profile` & "Conditioning" Model** (Ref: `Character_Core_Systems.md`)
 *   **Concept:** A character's sexual tastes are modeled in the **`Eroticism Profile`**. This profile is dynamic, with `Affinity Score`s for various acts developing organically through positive/negative experiences, or being forcibly rewritten by `Deviance` corruption.
 
-**18. The "Hybrid Priority" Model for Psychology** (Ref: `Character_Core_Systems.md`)
+**19. The "Hybrid Priority" Model for Psychology** (Ref: `Character_Core_Systems.md`)
 *   **Concept:** The AI resolves conflicting desires using a two-level system. **Hard Overrides** (from absolute physical states like `Agency 0`) filter out impossible actions, while a **Weighted Combination** of all other psychological drivers determines the final, highest-urgency choice from the remaining options.
+
+---
+
+### **Additions for `Design_Notes_Annex.md`**
+
+**20. The `Knowledge_Base` System for Collective Party Knowledge**
+*   **Problem Solved:** How to store and access permanent, party-wide tactical and narrative information (like `Insights` and discovered lore) without incorrectly placing it in a single character's state.
+*   **Core Concept:** A new, global `Knowledge_Base` system will serve as the central repository for all information the party has collectively learned. This system is diegetically represented by the "Dossiers" tab in the Facility Tablet UI. Actions that require specific knowledge (like a Disruption) will have their prerequisites query this central database rather than an individual character's state. This ensures that knowledge gained by one character is available to all, streamlining gameplay.
+
+**21. The Analyst as "Network Ghost"**
+*   **Problem Solved:** How to diegetically represent The Analyst's unique nature as a non-corporeal companion and justify their character arc.
+*   **Core Concept:** The Analyst is not bound to a single device but exists as a "network ghost" within a secure legacy sub-network of the facility. They can observe events and communicate contextually through any nearby terminal, speaker, or PDA. This role as an ever-present but intangible observer directly fuels their core character crisis of competence vs. embodiment. Their efforts to manage the `Knowledge_Base` are a reflection of their desperate attempt to be useful and understand a physical world they cannot touch, perfectly teeing up their "Identity Through Embodiment" arc.
+
+**22. "Consequence Packages" for Modular Action Resolution**
+*   **Problem Solved:** How to create reusable, complex outcomes for actions without hardcoding them for every single action.
+*   **Core Concept:** The `Encounter_Engine_Library` will contain a new section for "Consequence Packages." An action's outcome (e.g., `Standard_Disruption_Failure`) will point to a `Package_ID` instead of listing individual effects. This package contains a collection of effects (deal damage, apply status effect, trigger reaction, etc.). This allows for rapid creation and balancing of action outcomes and is used for Disruption failures, "Messy Disruption" ties, and potentially complex standard attacks.
+
+---

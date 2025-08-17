@@ -21,11 +21,14 @@
 
 ### **1.2 The Engines**
 
-*   **`Core_Encounter_Engine.md`:**
-    *   **Status:** **Design Complete.**
+*   **`Encounter_Engine.md`:**
+    *   [ ] **(NEW)** Formally update the `Action & Effect Resolution` section to include the concept of **"Consequence Packages."**
+    *   [ ] Specify that the engine can resolve an action's outcome by referencing a `Package_ID` from the `Encounter_Engine_Library`, allowing for complex, reusable consequence sets.
+    *   [ ] Update the `Psychology Interface` to reflect that an action template in the library can point to these packages.
 
 *   **`Exploration_Engine.md` (New Document):**
     *   [ ] Write this document, defining navigation, discovery, and the "Euclidean Betrayal" system.
+    *   [ ] Finalize Core Loop Hybrid Model (From Separate Ideas Document)
     *   [ ] Formally design the **"Ambient Psychology"** and **Hierarchical Choice** systems.
 
 *   **`Narrative_Engine.md` (New Document):**
@@ -38,9 +41,14 @@
 *   **`Character_Core_Systems.md` (Finalization):**
     *   [X] Refine new document format and rules **(Condensed all complete tasks)**
     *   [ ] Formally define the **`Character Psychology Output Interface`** **[TODO: Pending `Narrative_Engine` design]**.
+    *   [ ] **(NEW)** Integrate the **"Affinity-Weighted Expression"** model for branching corruption tracks (`Dominion`, `Exposure`, `Communion`).
+        *   [ ] Add the **`Expression Affinity`** data structure (e.g., `{Dominant: 0, Submissive: 0}`) to the Character State Framework.
+        *   [ ] Formally document how `Character Nature` provides the starting `Affinity Scores`.
+        *   [ ] Define the mechanic for how in-game experiences modify `Affinity Scores` over time (as a positive/negative reinforcement loop).
+        *   [ ] Update the `Psychological Integration` component to use `Affinity Scores` as a primary weight when generating `Intents` for these tracks.
 
 *   **`Subject_Core_Systems.md` (Major Refinement):**
-    *   [ ] Refine and finalize the **Two-Vector Corruption System** (`Corruption Bleed` + `Direct Application`).
+    *   [X] Refine and finalize the **Two-Vector Corruption System** (`Corruption Bleed` + `Direct Application`).
     *   [ ] Formally add the **"One Subject at a Time"** rule as a constitutional principle.
     *   [ ] Design the **"Disruption"** mechanic and the **"Insight" System** for discovering weaknesses.
     *   [ ] Add a section on **"Intersubject Dynamics"** (Rivalries/Synergies).
@@ -51,7 +59,7 @@
 
 
 *   **`Hazard_Systems.md` (New Document):**
-    *   [ ] Write this document, detailing the **Modular Hazard Component Library**.
+    *   [ ] Write this document, detailing the **Modular Hazard Component Library**. (Has separate Ideas Document)
     *   [ ] Detail the **"Psychology Shim"** integration.
 
 ### **1.4 Progression & Environment**
@@ -76,18 +84,31 @@
 
 #### **Engine & Systems Libraries**
 
+*   **`Knowledge_Base.md` (New Document):**
+    *   [ ] **(NEW)** Write this new document to define the global, party-wide knowledge database.
+    *   [ ] Define the data structure for storing `Insights`, lore entries, and other discovered information.
+    *   [ ] Detail its API for other systems (e.g., `Knowledge_Base.Has_Insight()`).
+    *   [ ] Explain its diegetic connection to The Analyst and the "Facility Tablet" UI.
+
 *   **`Encounter_Engine_Library.md` (New Document):**
     *   [ ] Create this document to serve as the "database" for the Encounter Engine.
     *   [ ] **Universal Action Library:** Define "Action Templates" and list core Intents (e.g., `ATTACK`, `RESTRAIN`, `SEDUCE`, `PENETRATE`).
     *   [ ] **Reaction Library:** Create the master list of all universal `Reactions`.
     *   [ ] **Proximity Effect Library:** Create the master list of all passive auras and their resolution models.
     *   [ ] **Stance & Position Library:** Create the master list of all possible entity stances.
+    *   [ ] **(NEW)** Add a new major section: **"The Consequence Package Library."**
+        *   [ ] Define the data structure for a `Consequence Package`.
+        *   [ ] Create the initial packages required for the Disruption system (e.g., `Standard_Disruption_Failure`, `Cunning_Subject_Failure`, `Messy_Disruption_Tie`).
+    *   [ ] **(NEW)** Add a new major section: **"The Disruption Action Library."**
+        *   *Designer's Note: This is a thematic organization within the `Universal Action Library`, not a separate system.*
+        *   [ ] Formally document that Disruption Actions are standard actions whose `Prerequisites` check the `Knowledge_Base`.
+        *   [ ] Create template entries for the initial B3 Subject Disruption actions, referencing the new Consequence Packages.
 
 *   **`Character_Core_Systems_Library.md` (New Document):**
     *   [ ] Create this new document to serve as the "database" for the Character Core Systems.
     *   [ ] Create the **`Senses` Library:**
         *   [ ] Define the master list of all valid **`special_senses` tags**, including all planned variants of synesthesia (e.g., `synesthesia_audio_visual`, `synesthesia_audio_tactile`, `synesthesia_thermo_erotic`).
-    *   [ ] Define **Companion Nature** Libraries
+    *   [ ] Define **Character Nature** Libraries
         *   [ ] **`Core Drives` Library:** Create the master list of all valid `core_drives` (e.g., "Seek_Knowledge," "Ensure_Ally_Safety," "Acquire_Power").
         *   [ ] **`Default Responses` Library:** Create the master list of all valid `default_responses` and their sub-properties (e.g., `stress_response` options: "Analyze," "Action," "Freeze").
         *   [ ] **`Behavioral Weights` Library:** Define the master list of all `Intent` categories that can be weighted (e.g., "Aggressive_Actions," "Supportive_Actions," "Investigative_Actions").
@@ -122,6 +143,11 @@
         *   [ ] Document the baseline **"meta-weights"** for the **State Priority Hierarchy**, defining the default multiplicative power of each psychological driver (e.g., `Meter_Crisis_Weight`, `Compulsive_Arousal_Weight`).
         *   [ ] Create a master list of all valid **`Emotional Tone`** tags (e.g., "Desperate," "Confident," "Resigned") that can be output for the `Narrative_Engine`.
         *   [ ] Create a master list of template formats for **`Internal Monologue Hint`s**.
+    *   [ ] **(NEW)** Create the **`Expression Affinity` Library:**
+        *   [ ] Define the master list of all valid `Affinity` keys (e.g., `Dominant`, `Submissive`, `Exhibitionist`, `Voyeur`, `Idol`, `Devotee`).
+        *   [ ] Document the default starting `Affinity Score` values for all core companions based on their `Character Nature`.
+        *   [ ] Assign the specific, tweakable numerical modifiers for key in-game events that influence affinity (e.g., `successful_dominant_action_modifier: +1.0`, `traumatic_submissive_event_modifier: +1.5`).
+
 
 ### **1.6 Content Blueprints & Story**
 
@@ -134,6 +160,9 @@
     *   [ ] Perform a full content pass on the four core companions.
     *   [ ] For each companion, formally document their `Character Nature` component (core drives, goals, etc.).
     *   [ ] Detail how their `Character Nature` influences their `Psychology System` to generate specific `Intents`.
+    *   [ ] **(NEW)** Formally document **The Analyst's** full character arc.
+        *   [ ] Integrate the "Network Ghost" and "Identity Through Embodiment" concepts.
+        *   [ ] Detail how their role as the manager of the `Knowledge_Base` feeds their character development and competence crisis.
     *   [ ] For each companion, formally document their **Starting Relationship Matrix**, defining their initial relationship values with the player and all other companions.
 
             |                 |  Player   |  Scholar  | Protector |Manipulator|  Analyst  |
