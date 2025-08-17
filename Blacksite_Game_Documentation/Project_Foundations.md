@@ -229,57 +229,58 @@ This modular, hand-off-based architecture allows each system to specialize, resu
 
 ## **Appendix A: The Documentation Library**
 
-This appendix serves as the master table of contents for the project's complete design documentation. Each document is a self-contained authority on its subject, organized into a clear hierarchy.
+This appendix serves as the master table of contents for the project's complete design documentation. It provides a comprehensive, explicit list of every design document, organized into a six-tier hierarchy that separates philosophy, systems, and data.
 
 ### **Tier 1: Foundational Documents**
+*The project's core philosophy, ethics, and universal rules.*
 
-*   **`Project_Constitution.md`:** The project’s unchanging philosophical bedrock. This document contains the core design principles and ethical framework that govern all other documents and development decisions. It is the ultimate source of truth for the project's vision and identity.
+*   **`Project_Constitution.md`:** The project’s unchanging philosophical bedrock. Contains the core design principles and ethical framework that govern all development.
+*   **`Project_Foundations.md`:** The essential primer for the entire project. Contains the high-level overview, the universal rules, and the fundamental player contract.
 
-*   **`Project_Foundations.md`:** The essential primer for the entire project. This document contains the high-level overview of the story and gameplay, the universal rules that apply to all players and entities, and a summary of the core mechanical systems. It is the primary onboarding document for any new collaborator.
+### **Tier 2: Core Entity Systems**
+*The blueprints defining the "nouns" of the game—what things *are*.*
 
-### **Tier 2: The Core Systems (Entity Blueprints)**
+*   **`Character_Core_Systems.md`:** The complete blueprint for any character entity (Player, Companion, or NPC), defining their core stats and the comprehensive Character State Framework.
+*   **`Subject_Core_Systems.md`:** The complete blueprint for any supernatural Subject, defining their power scaling, corruption mechanics, and the framework for their alien psychology.
+*   **`Hazard_Systems.md`:** The blueprint and creation manual for ancillary threats like traps and Processed Personnel.
 
-*   **`Character_Core_Systems.md`:** The complete blueprint for any character entity (Player, Companion, or NPC). It defines their core mechanics (Meters, Attributes, Skillsets) and the comprehensive **Character State Framework** that governs their psychology, anatomy, and relationships.
+### **Tier 3: The Core Engines**
+*The blueprints defining the "verbs" of the game—the active processes that manage gameplay and narrative flow.*
 
-*   **`Subject_Core_Systems.md`:** The complete blueprint for any supernatural Subject. It defines their power scaling (Threat Level, Category, Classification), the mechanics of Corruption, and the comprehensive **Subject State Framework** that governs their alien psychology and incomprehensible goals.
+*   **`Encounter_Engine.md`:** The universal conflict resolution coordinator, detailing the "Narrative Round" loop and the logic for all dynamic, multi-entity encounters.
+*   **`Exploration_Engine.md`:** The engine that governs the default state of the game, managing navigation, discovery, and the "Ambient Psychology" system.
+*   **`Narrative_Engine.md`:** The system that translates raw mechanical outcomes from all other engines into player-facing text.
 
-*   **`Hazard_Systems.md`:** The blueprint and creation manual for ancillary threats like traps and Processed Personnel. This document contains the **Modular Hazard Component Library** and the "Psychology Shim" integration guide, allowing for the creation of simple, non-psychological threats that can interface with the main encounter engine.
+### **Tier 4: Core Gameplay Systems**
+*The major, overarching rule systems that govern significant aspects of gameplay.*
 
-### **Tier 3: The Engines (Active Processes)**
+*   **`Character_Progression_Systems.md`:** Defines the rules for how a character changes and evolves over time, including the frameworks for Perks, Status Effects, Skillset Evolutions, and Equipment.
+*   **`Facility_Environment_Systems.md`:** The reusable template and rulebook for creating the game's environment and its interactive elements, like Medical Services.
 
-*   **`Encounter_Engine.md`:** The universal conflict resolution coordinator. This document details the "Narrative Round" loop, the dynamic priority queue for actions, and the universal protocols for managing all forms of dynamic, multi-entity encounters.
+### **Tier 5: The System Libraries**
+*The structured data that defines the parameters and valid options for the core systems. This is the "configuration" layer, containing tweakable data for balancing.*
 
-*   **`Exploration_Engine.md`:** The engine that governs the default state of the game. It manages player navigation, discovery, the "Ambient Psychology" system for incidental dialogue, and the trigger logic that initiates encounters.
+*   **`Encounter_Engine_Library.md`:** The database for the Encounter Engine, containing the master lists of all Universal Actions, Reactions, Proximity Effects, and Stances.
+*   **`Character_Core_Systems_Library.md`:** The database for the Character Core Systems, containing the master lists of all Natures, psychological weights, relationship modifiers, corruption themes, and other balance-tweakable data.
 
-*   **`Narrative_Engine.md`:** The system that translates raw mechanical outcomes into player-facing text. It defines the standardized **`Scene Requirement Data Structure`** (the "Intent Packet"), the micro-template architecture, and the variable dictionary used to construct all descriptive prose.
+### **Tier 6: The Content Layer**
+*The specific, creative instantiations of entities, items, and narrative. This is the "data" layer.*
 
-### **Tier 4: Modifiers & Environment**
+*   **`Story_Framework.md`:** The document containing the specific linear plot, major narrative beats, and unique story mechanics.
 
-*   **`Character_Progression_Systems.md`:** Defines how a character changes and evolves over time. This includes the systems for Skillset Evolution, Status Effects, Perks, and the complete Equipment Framework.
+*   **Entity Catalogs:**
+    *   **`Antagonist_Catalog.md`:** Contains the full, detailed profiles for the primary antagonists: The Other, The Architect, and The Resonance.
+    *   **`Companion_Catalog.md`:** Contains the full, detailed profiles for the main companions: The Scholar, The Protector, The Manipulator, and The Analyst.
 
-*   **`Encounter_Engine_Systems.md`:** The "database" of mechanical actions and effects used by the `Encounter_Engine`. This document contains the master libraries for all Universal Actions, Reactions, Proximity Effects, and other combat modifiers.
+*   **Content Lists:**
+    *   **`Perk_List.md`:** The master list containing the design and mechanical effects of every unique Perk.
+    *   **`Status_Effect_List.md`:** The master list containing the design and mechanical effects of every unique Status Effect.
+    *   **`Equipment_List.md`:** The master list containing the design and mechanical effects of every unique piece of Equipment.
+    *   **`Evolution_List.md`:** The master list containing the design and mechanical effects of every unique Skillset Evolution.
 
-*   **`Facility_Environment_Systems.md`:** The reusable template and rulebook for creating the facility's floors. It defines the static environmental properties, room connection logic, and the standards for all location-based data.
-
-### **Tier 5: The Content (Data)**
-
-*   **`Story_Framework.md`:** The document containing the specific linear plot, major narrative beats, and unique story mechanics like the `Live_Documentation_System`.
-
-*   **`Antagonist_Catalog.md`:** Contains the full, detailed profiles for the primary antagonists, such as The Other, The Architect, and The Resonance.
-
-*   **`Companion_Catalog.md`:** Contains the full, detailed profiles for the main companions, detailing their personalities, story arcs, and mechanical attributes.
-
-*   **`Perk_List.md`:** The master list containing the design and mechanical effects of every Perk available in the game.
-
-*   **`Status_Effect_List.md`:** The master list containing the design and mechanical effects of every Status Effect available in the game.
-
-*   **`Equipment_List.md`:** The master list containing the design and mechanical effects of every piece of Equipment available in the game.
-
-*   **`Evolution_List.md`:** The master list containing the design and mechanical effects of every Skillset Evolution available in the game.
-
-*   **`Floor_Specific_Frameworks` (e.g., `B3_Framework.md`):** Each floor of the facility receives its own Framework document. This file, based on the template from `Facility_Environment_Systems.md`, serves as the floor's master blueprint. It details the floor's purpose, environmental themes, room list and layout, and a complete manifest of all discoveries, events, and interactions present on that floor.
-
-*   **`Floor_Specific_Catalogs` (e.g., `B3_Catalog.md`):** Each floor also receives its own Catalog document. This file is the "monster manual" and "NPC list" for that specific floor. It contains the full, detailed profiles and stat blocks for every Subject, Hazard, and floor-specific NPC that resides there.
+*   **Floor-Specific Content:**
+    *   **`B?_Framework.md`:** The implemented blueprint for a specific floor (e.g., `B3_Framework.md`). It details the floor's purpose, environmental themes, room list, and a manifest of all discoveries and events.
+    *   **`B?_Catalog.md`:** The "monster manual" and "NPC list" for a specific floor (e.g., `B3_Catalog.md`). It contains the full stat blocks for all Subjects, Hazards, and NPCs residing on that floor.
 
 ---
 
