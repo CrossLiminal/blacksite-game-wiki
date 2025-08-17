@@ -27,6 +27,9 @@
 *   **`Exploration_Engine.md` (New Document):**
     *   [ ] Write this document, defining navigation, discovery, and the "Euclidean Betrayal" system.
     *   [ ] Formally design the **"Ambient Psychology"** and **Hierarchical Choice** systems.
+    *   [ ] Write this document, defining navigation, discovery, and the "Euclidean Betrayal" system.
+    *   [ ] Formally design the **"Ambient Psychology"** and **Hierarchical Choice** systems.
+    *   [ ] **(NEW)** Formally design and document the **"Off-Screen Resolution System"** for managing autonomous companion encounters.
 
 *   **`Narrative_Engine.md` (New Document):**
     *   [ ] **(CRITICAL PRIORITY)** Define the **`Scene Requirement Data Structure`** (the "Intent Packet").
@@ -60,7 +63,6 @@
         *   [ ] The rules for **Keyholding**.
         *   [ ] The definition and application of **Consent Status** (`CONSENTING` vs. `FORCED`).
         *   [ ] The design principle that the controlling entity's nature determines the **type of equipment selected**.
-    *   [ ] Design and document the **"Off-Screen Resolution System."**
     *   [ ] **(HIGH PRIORITY)** Design the **"Player Agency vs. Transformation" Framework** for resisting physical changes.
 
 *   **`Facility_Environment_Systems.md` (Major Refactor):**

@@ -1,86 +1,91 @@
 # **Design Notes Annex**
 
-**Purpose:** This document is a living reference and companion to the formal design documentation. It contains the detailed context, reasoning, and illustrative examples behind the project's core mechanics and systems. Its purpose is to preserve the "why" behind the design, serving as the primary source material for writing the final, clean documentation.
+**Purpose:** This document is a living reference and companion to the `Development_Roadmap`. It contains the core concepts, design philosophies, and initial brainstorming for systems that are still in development. It serves as the primary source material for writing the final, clean documentation for each pending task.
 
 ---
+### **Notes for `Exploration_Engine.md`**
 
-## **Design Note: Universal Player Experience**
-
-### **1. The "Page-Based" Experience**
-*   **Finalized Concept:** The entire game, both in and out of encounters, uses a "page-based" narrative interface. The player is presented with a block of descriptive text summarizing events, followed by a set of choices.
-*   **Key Mechanics:** This is a UI/UX principle that unifies the `Exploration_Engine` and the `Core_Encounter_Engine`. The `Exploration_Engine`'s "Scene Runner" and the `Encounter_Engine`'s "Player Input Trigger" are two different backend systems that produce the same user-facing result.
-*   **Thematic Purpose:** Creates a consistent, immersive, and novel-like experience, focusing the player on narrative and choice rather than complex, real-time mechanics.
-*   **Documentation Impact:** This is a foundational principle that should be stated in **`Project_Foundations.md`**.
-
-### **2. The "Consequence of Failure" System**
-*   **Problem Solved:** Prevents players from mindlessly spamming a failed skill check with no penalty.
-*   **Finalized Concept:** Failure to overcome a challenge always has a cost, chosen from one of three models based on the action's context.
-*   **The Three Costs:**
-    1.  **Meter Cost:** The attrition model. Failure directly damages a relevant meter (`Vitality`, `Stability`, etc.).
-    2.  **Escalation Cost:** The "making noise" model. Failure increases a hidden "Alert" tracker for the area, which can trigger a Hazard or Subject encounter.
-    3.  **Lockout Cost:** The "one shot" model. Failure makes the action impossible to attempt again, forcing an alternative solution.
-*   **Documentation Impact:** This universal rule system belongs in **`Project_Foundations.md`**.
-
-### **3. The Hierarchical Choice System**
-*   **Problem Solved:** Prevents UI clutter when performing complex, multi-part actions (e.g., using a specific item on a specific target's body part).
-*   **Finalized Concept:** The UI will use a "drill-down" or expanding menu system. The player starts with a high-level "verb" (e.g., `[Initiate Intimacy...]`) and then makes a series of contextual choices to specify the target, tool, and method, which assembles the final `IntentPacket`.
-*   **Key Mechanics:** Introduces "smart buttons" like `[Continue]` and `[Change Pace]` to streamline repeated actions within an encounter.
-*   **Documentation Impact:** This is a core part of the **`Exploration_Engine.md`** as it defines the primary UI interaction model.
-
----
-
-## **Design Note: Core Character & Entity Concepts**
-
-### **4. The Resonance Adaptation Field**
-*   **Finalized Concept:** The Resonance is a primordial Subject intertwined with the facility's reactor, creating a passive reality-warping field. The "Protective Injection Protocol" attunes subjects to this field.
-*   **Key Mechanics:**
-    1.  **Enhanced Physical Malleability:** Explains character survival of physically impossible encounters.
-    2.  **Equipment Restoration ("Resonance Repair"):** Passively repairs damaged/torn clothing after an encounter, removing logistical tedium.
-    3.  **Superficial Healing:** Allows minor modifications like piercings to heal naturally.
-    4.  **Limits of Protection:** Major modifications (tattoos, brands) persist and require medical services for reversal. Psychological corruption is permanent.
-*   **Thematic Purpose:** Reinforces the horror that the facility is "maintaining" its test subjects. Provides lore for Processed Personnel (attunement failure).
-*   **Documentation Impact:** The core definition belongs in **`Project_Foundations.md`**. Its effects are detailed in **`Character_Core_Systems.md`** (`Anatomy`) and **`Character_Progression_Systems.md`** (`Equipment`).
-
-### **5. The "One Subject at a Time" Rule**
-*   **Finalized Concept:** Encounters can only ever have one active Subject at a time.
-*   **Thematic Purpose:** Reinforces Subjects as sovereign, overwhelming forces of nature. The lore explanation is that their `Corruption Bleed` auras are fundamentally incompatible and would cause catastrophic reality distortion if overlapped.
-*   **Key Mechanics:** Dramatically simplifies encounter balance. Allows for the "Hand-Off" encounter type, where fleeing one Subject leads you into another's territory, creating a new encounter. Does not forbid encounters with 1 Subject + multiple Hazards/Personnel.
-*   **Documentation Impact:** This is a constitutional rule that belongs in **`Subject_Core_Systems.md`**.
-
-### **6. The "Disruption" & "Insight" Systems**
-*   **Problem Solved:** Provides players with a non-appeasement "win" condition against meter-less Subjects.
-*   **Finalized Concept:** "Disruption" is the act of attacking a Subject's manifestation, psychology, or systemic weakness. "Insights" are the in-game knowledge required to unlock Disruption actions.
-*   **The Three Pathways to Insight:**
-    1.  **Research:** Finding Subject documentation during exploration.
-    2.  **Observation:** Using an in-encounter action to analyze the Subject.
-    3.  **Experimentation:** Using environmental objects or items in creative ways.
-*   **Thematic Purpose:** Turns each Subject into a unique puzzle to be solved, rewarding all playstyles.
-*   **Documentation Impact:** This core mechanic belongs in **`Subject_Core_Systems.md`**.
-
-### **7. The Modular Hazard System**
-*   **Problem Solved:** Creates a lightweight system for handling simpler threats (traps, Processed Personnel) without the overhead of a full psychology system.
-*   **Finalized Concept:** A Hazard is built from a library of modular components (Core Profile, Trigger, Behavior, Interaction, Effect).
-*   **Key Mechanics:** The "Psychology Shim" translates a Hazard's static profile into a valid `PsychologyOutput`, allowing it to interface seamlessly with the `Encounter_Engine`.
-*   **Documentation Impact:** This entire system is the core of **`Hazard_Systems.md`**.
-
----
-
-## **Design Note: Progression & Exploration**
-
-### **8. The "Ambient Psychology" System**
+**1. The "Ambient Psychology" System**
 *   **Problem Solved:** Makes the exploration phase feel alive and prevents companions from being silent props.
-*   **Finalized Concept:** During exploration, the `Exploration_Engine` will perform a lightweight query of all present characters' `Psychology Systems` to generate ambient thoughts and incidental dialogue.
-*   **Key Mechanics:** The `Narrative_Engine` weaves these dynamic psychological outputs into the static room descriptions, creating a unique narrative experience for each visit based on the party's current state.
-*   **Documentation Impact:** This is a core feature of the **`Exploration_Engine.md`**.
+*   **Core Concept:** During exploration, the `Exploration_Engine` will perform lightweight queries of all present characters' `Psychology Systems` to generate ambient thoughts and incidental dialogue. The `Narrative_Engine` then weaves these dynamic outputs into the static room descriptions.
 
-### **9. The "Off-Screen Resolution" System**
-*   **Problem Solved:** Gives mechanical weight to the party being split up.
-*   **Finalized Concept:** When a companion is exploring independently, they can trigger their own encounters. These are resolved via a lightweight, abstracted "Simulated Encounter" by the `Core_Encounter_Engine`.
-*   **Key Mechanics:** The outcome is logged and reported to the player by The Analyst. This can lead to the player needing to "Intervene" in a nearby encounter.
-*   **Documentation Impact:** This system belongs in **`Character_Progression_Systems.md`**, as it's a core part of companion autonomy and progression.
+**2. The Hierarchical Choice System**
+*   **Problem Solved:** Prevents UI clutter for complex, multi-part actions (e.g., using a specific item on a specific target's body part).
+*   **Core Concept:** The UI will use a "drill-down" or expanding menu system. The player starts with a high-level "verb" (e.g., `[Use Item...]`) and then makes a series of contextual choices to specify the target, tool, and method.
 
-### **10. The "Clothing as Defensive Bonus" System**
-*   **Problem Solved:** Creates a simple, flexible system for handling clothing in intimate/hostile encounters that is superior to rigid "access layers."
-*   **Finalized Concept:** Clothing items provide a flat **`Defensive_Bonus`** to a character's opposed roll when an enemy attempts an action that requires changing a zone's `exposure_state`.
-*   **Key Mechanics:** A single opposed roll determines both the success of the exposure attempt and the primary action. `exposure_state` (`Covered`, `Exposed`) is tracked on the character's `Anatomy Profile`.
-*   **Documentation Impact:** The rules for this belong in **`Character_Progression_Systems.md`** (Equipment Framework), with the `exposure_state` property being defined in **`Character_Core_Systems.md`** (Anatomy Profile).
+**3. The "Off-Screen Resolution" System**
+*   **Problem Solved:** Gives mechanical weight and narrative consequence to the party being split up.
+*   **Core Concept:** When a companion is exploring independently, they can trigger their own encounters. These are resolved via a lightweight, abstracted "Simulated Encounter" by the `Core_Engine`. Outcomes are logged and reported to the player, and can create "Intervention" opportunities.
+
+---
+### **Notes for `Subject_Core_Systems.md`**
+
+**5. The "One Subject at a Time" Rule**
+*   **Problem Solved:** Dramatically simplifies encounter balance and reinforces the power of Subjects.
+*   **Core Concept:** Encounters can only ever have one active Subject at a time. The lore explanation is that their `Corruption Bleed` auras are fundamentally incompatible and would cause catastrophic reality distortion if overlapped. This does not forbid encounters with 1 Subject + multiple Hazards.
+
+**6. The "Disruption" & "Insight" Systems**
+*   **Problem Solved:** Provides players with a non-appeasement "win" condition against meter-less Subjects, turning them into unique puzzles.
+*   **Core Concept:** "Disruption" is the act of attacking a Subject's manifestation or psychological weakness. "Insights" are the in-game knowledge required to unlock Disruption actions, which can be discovered via Research, Observation, or Experimentation.
+
+**7. The "Two-Vector" Corruption System**
+*   **Problem Solved:** How do Subjects corrupt characters both passively and actively?
+*   **Core Concept:** Subjects apply corruption through two distinct vectors:
+    1.  **`Corruption Bleed`:** A passive, proximity-based aura that slowly applies a generalized, thematic corruption to all characters in the area.
+    2.  **`Direct Application`:** A specific, targeted corrupting action used during an encounter that applies a large, focused package of corruption.
+
+**8. The "Fixation Matrix" as `Nature` Equivalent**
+*   **Problem Solved:** How to model the alien, goal-oriented psychology of a Subject.
+*   **Core Concept:** A Subject's `Psychology` is not driven by a complex, human-like `Nature`. Instead, it is driven by a **`Fixation Matrix`**—a simple, obsessive list of goals and priorities (e.g., `[Enforce_Territory]`, `[Test_Prey_Resilience]`, `[Apply_Botanical_Corruption]`). This is their immutable "operating system."
+
+**9. Intersubject Dynamics**
+*   **Problem Solved:** How do Subjects interact with each other when the player isn't around?
+*   **Core Concept:** Subjects have predefined relationships with one another (Rivalries, Synergies, Indifference). These dynamics can affect the state of the facility. A player might find a room wrecked because two rival Subjects had a territorial dispute, or find a Hazard that has been augmented by the influence of a nearby Subject.
+
+---
+### **Notes for `Hazard_Systems.md`**
+
+**10. The Modular Hazard System**
+*   **Problem Solved:** Creates a lightweight system for simpler threats (traps, Processed Personnel) without the overhead of a full psychology system.
+*   **Core Concept:** A Hazard is built from a library of modular components (Core Profile, Trigger, Behavior, Effect). The **"Psychology Shim"** is a lightweight translator that allows a Hazard's static, pre-defined profile to be formatted into a valid `PsychologyOutput` that the `Encounter_Engine` can understand.
+
+---
+### **Notes for `Character_Progression_Systems.md`**
+
+**11. The "Clothing as Defensive Bonus" System**
+*   **Problem Solved:** Creates a simple, flexible system for handling clothing in intimate/hostile encounters.
+*   **Core Concept:** Instead of complex "access layers," clothing items provide a flat **`Defensive_Bonus`** to a character's opposed roll when an enemy attempts an action that requires changing a zone's `exposure_state`. A single roll determines both the success of the exposure and the primary action.
+
+**12. The "Player Agency vs. Transformation" Framework**
+*   **Problem Solved:** How to give the player meaningful agency to resist unwanted physical transformations (`Metamorphosis`) without negating the horror of corruption.
+*   **Core Concept:** Resisting a `Corruption Vector` is a choice with a cost. It may require spending a rare resource, or inflicting a large amount of `Stability` damage as the character's mind fights their body. Conversely, *accepting* the transformation might prevent the `Stability` damage, creating a tempting choice between preserving the body or the mind.
+
+---
+### **Notes for `Facility_Environment_Systems.md`**
+
+**13. Facility Medical Services Integration**
+*   **Problem Solved:** How does the player reverse unwanted physical changes, and how does the facility turn this into a system of control?
+*   **Core Concept:** The medical bay is a "body shop," not a hospital. Physical transformations can be reversed, but always at a significant cost (rare resources, favors, completing dangerous tasks). Crucially, the psychological and corrupting effects are permanent. This creates a dependency loop where the player is tempted to accept "useful" corruptions, believing they can just "fix it later," drawing them deeper into the facility's control.
+
+---
+### **Notes for `Story_Framework.md`**
+
+**14. The `Live_Documentation_System`**
+*   **Problem Solved:** How to deliver lore and create a sense of a living, uncaring system observing the player.
+*   **Core Concept:** As the player performs actions and their state changes, the game generates in-universe "documentation" about them in real-time. After a particularly traumatic encounter, a "Clinical Observation Report" might appear in the player's log. After a character develops a new corruption, a new, redacted "Specimen Profile" might be created for them, written from the cold, detached perspective of The Other or The Architect.
+
+---
+### **Reference Notes for Completed Systems**
+*(Core philosophies of complex, recently designed systems, preserved here for high-level reference.)*
+
+**15. The "Slot & Hijack" Principle for Anatomy** (Ref: `Character_Core_Systems.md`)
+*   **Concept:** To maintain a body horror theme, character anatomy has defined "slots" for major features. Corruption can add to empty slots, but a "Hijack" transformation will consume and replace an existing body part, representing a horrifying violation of the human template.
+
+**16. The "Creeping Transformation" & `Corruption Vector`** (Ref: `Character_Core_Systems.md`)
+*   **Concept:** Corruption is not instantaneous. It applies a persistent **`Corruption Vector`** (an "instruction packet") to a character. This vector then applies its thematic change in small, terrifying increments at set intervals, allowing a desperate window for the player to try and intervene.
+
+**17. The `Eroticism Profile` & "Conditioning" Model** (Ref: `Character_Core_Systems.md`)
+*   **Concept:** A character's sexual tastes are modeled in the **`Eroticism Profile`**. This profile is dynamic, with `Affinity Score`s for various acts developing organically through positive/negative experiences, or being forcibly rewritten by `Deviance` corruption.
+
+**18. The "Hybrid Priority" Model for Psychology** (Ref: `Character_Core_Systems.md`)
+*   **Concept:** The AI resolves conflicting desires using a two-level system. **Hard Overrides** (from absolute physical states like `Agency 0`) filter out impossible actions, while a **Weighted Combination** of all other psychological drivers determines the final, highest-urgency choice from the remaining options.
