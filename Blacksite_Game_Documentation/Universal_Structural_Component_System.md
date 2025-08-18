@@ -28,15 +28,35 @@ An entity's form consists of three distinct component types:
 - **Structure:** ID + narrative tags (no mechanical values)
 - **Not targetable in encounters**
 
+```
+Descriptive_Component {
+    id: String              # Unique identifier
+    tags: Array[String]     # Pure narrative descriptors
+}
+```
+
 ### **2.2 Systemic Components**  
 - **Purpose:** Passive/active effects that influence the game world
 - **Structure:** ID + mechanical properties that create effects
 - **Not directly targetable, but mechanically relevant**
 
+```
+Systemic_Component {
+    id: String              # Unique identifier
+    properties: Dictionary  # Mechanical values that affect gameplay
+}
+```
+
 ### **2.3 Interactive Components**
 - **Purpose:** Physical interaction points for the `Core_Encounter_Engine`
 - **Structure:** Full mechanical framework for encounter resolution
 - **Directly targetable in encounters**
+
+```
+Interactive_Component {
+    # See Section 6 for full structure
+}
+```
 
 ---
 
