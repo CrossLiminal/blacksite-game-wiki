@@ -125,4 +125,14 @@
 *   **Problem Solved:** How to create reusable, complex outcomes for actions without hardcoding them for every single action.
 *   **Core Concept:** The `Encounter_Engine_Library` will contain a new section for "Consequence Packages." An action's outcome (e.g., `Standard_Disruption_Failure`) will point to a `Package_ID` instead of listing individual effects. This package contains a collection of effects (deal damage, apply status effect, trigger reaction, etc.). This allows for rapid creation and balancing of action outcomes and is used for Disruption failures, "Messy Disruption" ties, and potentially complex standard attacks.
 
+**23. The "Corruption Budget" Rebalance**
+*   **Problem Solved:** The original corruption system had a balancing flaw where Subjects with fewer tracks were objectively less corrupting. The total output was also excessively high, diminishing the significance of `Corruption Bleed` and potentially accelerating progression too quickly against 100-point thresholds.
+*   **Core Concept:** The `Direct Application` corruption payload is now a balanced "budget" of points equal to `Threat + Category`. This payload is distributed across a Subject's tracks according to pre-defined focus profiles (e.g., "Specialist: 60/30/10," "Focused: 75/25").
+    *   **Outcome 1 (Balance):** All Subjects of a given Threat/Category now have the same total corruption output, making the number of tracks a purely thematic choice.
+    *   **Outcome 2 (Pacing):** The overall point values are lower, which re-establishes `Corruption Bleed` as a significant threat and allows for a more granular, better-paced long-term character transformation, better suited for a multi-week in-game floor timeline.
+
+**24. Thresholds as Limiters & Escalating Costs**
+*   **Problem Solved:** Clarifying the relationship between Corruption Points, Thresholds, and the `Corruption Vector` system. How does long-term progression work?
+*   **Core Concept:** `Corruption Thresholds` are not the direct trigger for a change. They are the **limiters** that define the *maximum intensity* of a transformation a character can undergo. The `Corruption Vector` is the **driver** that actually applies the change over time, but it cannot apply a change that is beyond the character's current Threshold. Furthermore, the point cost to reach subsequent thresholds should escalate, making deeper corruption a significantly greater investment. The rules for this progression will live in `Character_Progression_Systems.md`.
+
 ---

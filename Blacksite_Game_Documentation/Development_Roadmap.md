@@ -22,9 +22,16 @@
 ### **1.2 The Engines**
 
 *   **`Encounter_Engine.md`:**
-    *   [ ] **(NEW)** Formally update the `Action & Effect Resolution` section to include the concept of **"Consequence Packages."**
-    *   [ ] Specify that the engine can resolve an action's outcome by referencing a `Package_ID` from the `Encounter_Engine_Library`, allowing for complex, reusable consequence sets.
-    *   [ ] Update the `Psychology Interface` to reflect that an action template in the library can point to these packages.
+    *   [ ] **(REVISED)** Write this document, formally defining the **"Hybrid Model v3.2"** as the core architecture.
+    *   [ ] Document the **"Tick-Based" World State** as the fundamental time progression mechanic.
+    *   [ ] Detail the **Dual Encounter Trigger System**, clearly separating the **Subject Encounter Check** (AI-driven, highest priority) from the **Hazard Encounter Check** (location-based, lower priority).
+    *   [ ] Formally design the **Subject AI's Three-Tier Exploration State** (`OBSERVE`, `HAUNT`, `INITIATE`).
+        *   [ ] Define the mechanics for **`Presence Effects`** as the narrative output of the `HAUNT` state.
+        *   [ ] Design the **`Stalking Intensity`** counter as the mechanic for escalating a prolonged `HAUNT`.
+        *   [ ] Create the master list of **`HAUNT Response Actions`** available to characters (e.g., `Prepare Defenses`, `Hide`).
+    *   [ ] Formally design the **`Interest Cache`** and **`Awareness Saturation`** systems as the core drivers for the Subject's targeting AI.
+    *   [ ] Formally design the **`Ambient Psychology`** system detailing companion reactions, including how it is triggered by game states (like `HAUNT`).
+    *   [ ] Formally add the **Hierarchical Choice** system to the UI interaction model.
 
 *   **`Exploration_Engine.md` (New Document):**
     *   [ ] Write this document, defining navigation, discovery, and the "Euclidean Betrayal" system.
@@ -38,8 +45,15 @@
 
 ### **1.3 Core Entity Systems**
 
+*   **`Entity_Core_Systems.md` (New Document, CRITICAL PRIORITY):**
+    *   [ ] **(NEW)** Create this new Tier 2 document to define the universal frameworks shared by all entities.
+    *   [ ] **(NEW)** Write the **"Universal Structural Component System"** section, defining the `Descriptive`, `Systemic`, and `Interactive` component family and all associated mechanics (Capabilities, States, Size Mismatch, etc.).
+    *   [ ] **(NEW)** Write the core framework for the universal **`Relationship State`** component.
+    *   [ ] **(NEW)** Write the core framework for the universal **`Climax State`** component.
+
 *   **`Character_Core_Systems.md` (Finalization):**
     *   [X] Refine new document format and rules **(Condensed all complete tasks)**
+    *   [ ] Update Genesis Framework for FULL Character Creation rules for States.
     *   [ ] Formally define the **`Character Psychology Output Interface`** **[TODO: Pending `Narrative_Engine` design]**.
     *   [ ] **(NEW)** Integrate the **"Affinity-Weighted Expression"** model for branching corruption tracks (`Dominion`, `Exposure`, `Communion`).
         *   [ ] Add the **`Expression Affinity`** data structure (e.g., `{Dominant: 0, Submissive: 0}`) to the Character State Framework.
@@ -47,24 +61,38 @@
         *   [ ] Define the mechanic for how in-game experiences modify `Affinity Scores` over time (as a positive/negative reinforcement loop).
         *   [ ] Update the `Psychological Integration` component to use `Affinity Scores` as a primary weight when generating `Intents` for these tracks.
 
+*   **`Character_Core_Systems.md` (Update Dependencies):**
+    *   [ ] **(REVISED)** Update document dependencies. New dependency: `Entity_Core_Systems.md`.
+    *   [ ] **(REVISED)** Refactor the `Anatomy Profile` section to be an *implementation* of the Universal Structural Component System.
+    *   [ ] **(RE-EVALUATE)** Review `Relationship` and `Climax` state sections to ensure they align with the new core frameworks from `Entity_Core_Systems.md`.
+
 *   **`Subject_Core_Systems.md` (Major Refinement):**
     *   [X] Refine and finalize the **Two-Vector Corruption System** (`Corruption Bleed` + `Direct Application`).
-    *   [ ] Formally add the **"One Subject at a Time"** rule as a constitutional principle.
-    *   [ ] Design the **"Disruption"** mechanic and the **"Insight" System** for discovering weaknesses.
-    *   [ ] Add a section on **"Intersubject Dynamics"** (Rivalries/Synergies).
+    *   [X] Formally add the **"One Subject at a Time"** rule as a constitutional principle.
+    *   [X] Design the **"Disruption"** mechanic and the **"Insight" System** for discovering weaknesses.
+    *   [X] Add a section on **"Intersubject Dynamics"** (Rivalries/Synergies).
     *   [ ] Add a design note clarifying that the **`Fixation Matrix` is the Subject's equivalent of a `Nature` component.**
     *   [ ] Add the `Climax State Component` to the `Subject State Framework`.
     *   [ ] Formally define the `Psychological Integration` and `Subject Psychology Output Interface`.
     *   [ ] **(NEW)** Add a design note to consider creating a **Subject** whose primary form of attack or corruption is the application of a **Synesthesia `Corruption Vector`**.
 
+*   **`Subject_Core_Systems.md` (Update Dependencies):**
+    *   [ ] **(REVISED)** Update document dependencies. New dependency: `Entity_Core_Systems.md`.
+    *   [ ] **(REVISED)** Create the `Manifestation Profile` section as an *implementation* of the Universal Structural Component System. **(This is our next writing task).**
+    *   [ ] **(RE-EVALUATE)** Review `Relationship` and `Climax` state sections to ensure they align with the new core frameworks.
 
 *   **`Hazard_Systems.md` (New Document):**
     *   [ ] Write this document, detailing the **Modular Hazard Component Library**. (Has separate Ideas Document)
     *   [ ] Detail the **"Psychology Shim"** integration.
 
+*   **`Hazard_Systems.md` (Update Dependencies):**
+    *   [ ] **(REVISED)** Update document dependencies. New dependency: `Entity_Core_Systems.md`.
+    *   [ ] **(REVISED)** Ensure that `Processed Personnel` and other corporeal Hazards use the Universal Structural Component System for their physical forms.
+
 ### **1.4 Progression & Environment**
 
 *   **`Character_Progression_Systems.md` (Major Overhaul):**
+    *   [ ] Define Character Tier System
     *   [ ] Overhaul the **Status Effects** and **Perk** systems, including a **"Perk Acquisition Mechanic."**
     *   [ ] Overhaul the **Equipment Framework**, adding "Cosmetics" and the **"Clothing as Defensive Bonus"** model.
     *   [ ] Formally document the **Equipment Control** subsystem, including:
@@ -76,19 +104,39 @@
     *   [ ] **(NEW)** Design the **Synesthesia System** as a gameplay mechanic:
         *   [ ] Formally add **Synesthesia** as a potential **`Corruption Perk`**, likely resulting from the `Enthrall` or `Metamorphosis` tracks.
         *   [ ] Design a temporary **`Status Effect`** that can induce a chaotic, short-term version of synesthesia.
+    *   [ ] **(NEW/HIGH PRIORITY)** Design and document the **"Corruption Threshold Progression System."**
+        *   [ ] Formally define the relationship between `Thresholds` (limiters) and `Corruption Vectors` (drivers).
+        *   [ ] Establish the total number of `Corruption Thresholds` (e.g., 20).
+        *   [ ] Create the formal table of **escalating point costs** for reaching each new threshold.
+        *   [ ] Rebalance the initial threshold costs to be achievable with the new, lower output of the "Corruption Budget" system, while ensuring later thresholds require facing more powerful Subjects.
 
 *   **`Facility_Environment_Systems.md` (Major Refactor):**
     *   [ ] Strip out all navigation and exploration mechanics.
     *   [ ] Create this document as the pure **template and rulebook for creating floors**.
     *   [ ] **(NEW)** Formally document the full **Facility Medical Integration** system here, including the **Protective Injection Protocol**'s contraceptive and resistance effects, and the rules for **Medical Reversal Services**.
+    *   [ ] **(NEW)** Update the formal template for a floor's `_Framework.md` document to include a new required section: **"Intersubject Dynamics Matrix."**
+        *   [ ] This section will define the `Rivalry/Synergy/Indifference` state between all Subjects residing on that specific floor.
 
-#### **Engine & Systems Libraries**
+### **1.5 Engine & Systems Libraries**
 
 *   **`Knowledge_Base.md` (New Document):**
     *   [ ] **(NEW)** Write this new document to define the global, party-wide knowledge database.
     *   [ ] Define the data structure for storing `Insights`, lore entries, and other discovered information.
     *   [ ] Detail its API for other systems (e.g., `Knowledge_Base.Has_Insight()`).
     *   [ ] Explain its diegetic connection to The Analyst and the "Facility Tablet" UI.
+
+*   **`Erotic_Content_Atlas.md` (New Document):**
+    *   [ ] **(NEW)** Create this new document to serve as the master implementation and style guide for all fetish content.
+    *   [ ] For each EIV and Content Flag, create an entry detailing:
+        *   [ ] A clear definition of the fetish.
+        *   [ ] Its core psychological drivers.
+        *   [ ] Guidelines for its narrative and thematic representation in-game.
+        *   [ ] Notes on its mechanical implementation and interaction with core systems (CSF, Agency, etc.).
+
+*   **`Core_Data_Library.md` (New Document):**
+    *   [ ] **(NEW)** Create the **`Structural_Template_Library`** section.
+        *   [ ] Define the data structure for a `Structural Template`.
+        *   [ ] Create the initial set of base templates (e.g., `Template_Humanoid`, `Template_Networked`, `Template_NonCorporeal`).
 
 *   **`Encounter_Engine_Library.md` (New Document):**
     *   [ ] Create this document to serve as the "database" for the Encounter Engine.
@@ -148,6 +196,16 @@
         *   [ ] Document the default starting `Affinity Score` values for all core companions based on their `Character Nature`.
         *   [ ] Assign the specific, tweakable numerical modifiers for key in-game events that influence affinity (e.g., `successful_dominant_action_modifier: +1.0`, `traumatic_submissive_event_modifier: +1.5`).
 
+    *   **`Subject_Core_Systems_Library.md` (New Document):**
+        *   [ ] **(NEW)** Create this new document to serve as the "database" for the Subject Core Systems.
+        *   [ ] **(NEW)** Create the **`Corruption Focus` Profile Library**, defining the master list of all valid budget distribution models and their percentage values.
+        *   [ ] **(NEW)** Create the **`Fixation Matrix` Libraries** section to define the master lists of all valid options for the `Fixation Matrix` component.
+            *   [ ] **`Designation` Library:** Create the master list of all valid `Designation` tags (e.g., "Territorial Predator," "Spiritual Nexus").
+            *   [ ] **`Core_Fixations` Library:** Create the master list of all valid `Core_Fixation` tags and their general intent (e.g., "Enforce_Territory," "Test_Prey_Resilience").
+            *   [ ] **`Stimuli_Responses` Library:** Create the master list of all valid `stimulus` keys and the `response` tags their AI can generate (e.g., `stimulus_territorial_intrusion` -> `response: "Escalate_Aggression"`).
+            *   [ ] **`Behavioral_Weights` Library:** Define the master list of all action categories or EIVs that can be weighted (e.g., "weight_worship_actions," "weight_restraint_actions").
+            *   [ ] **`Disruption_Triggers` Library:** Create the master list of all valid conceptual `Disruption_Trigger` tags (e.g., "Desecration," "Cognitive_Dissonance," "Sensory_Overload").
+        
 
 ### **1.6 Content Blueprints & Story**
 

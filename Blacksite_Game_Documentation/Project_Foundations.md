@@ -240,6 +240,7 @@ This appendix serves as the master table of contents for the project's complete 
 ### **Tier 2: Core Entity Systems**
 *The blueprints defining the "nouns" of the game—what things *are*.*
 
+*   **`Entity_Core_Systems.md`:** Defines the universal, foundational components and frameworks shared by all entities, including the **Universal Structural Component System**. This is the bedrock upon which all other Tier 2 documents are built.
 *   **`Character_Core_Systems.md`:** The complete blueprint for any character entity (Player, Companion, or NPC), defining their core stats and the comprehensive Character State Framework.
 *   **`Subject_Core_Systems.md`:** The complete blueprint for any supernatural Subject, defining their power scaling, corruption mechanics, and the framework for their alien psychology.
 *   **`Hazard_Systems.md`:** The blueprint and creation manual for ancillary threats like traps and Processed Personnel.
@@ -260,8 +261,10 @@ This appendix serves as the master table of contents for the project's complete 
 ### **Tier 5: The System Libraries**
 *The structured data that defines the parameters and valid options for the core systems. This is the "configuration" layer, containing tweakable data for balancing.*
 
+*   **`Core_Data_Library.md`:** The database for data shared across multiple entity systems, such as the master lists for `Zone`s, `Capabilities`, and `EIVs`.
 *   **`Encounter_Engine_Library.md`:** The database for the Encounter Engine, containing the master lists of all Universal Actions, Reactions, Proximity Effects, and Stances.
 *   **`Character_Core_Systems_Library.md`:** The database for the Character Core Systems, containing the master lists of all Natures, psychological weights, relationship modifiers, corruption themes, and other balance-tweakable data.
+*   **`Subject_Core_Systems_Library.md`:** The database for the Subject Core Systems, containing the master lists of all Fixations, Escalation Profiles, and other subject-specific data.
 
 ### **Tier 6: The Content Layer**
 *The specific, creative instantiations of entities, items, and narrative. This is the "data" layer.*

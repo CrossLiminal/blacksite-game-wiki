@@ -1,4 +1,4 @@
-# **Core Encounter Engine**
+# **Encounter Engine**
 
 **System Authority:** Universal interaction coordinator for all entity encounters and player choices.
 **Dependencies:** All `Core System` documents (Character, Subject, Hazard), `Narrative_Engine.md`, `Facility_Environment_Systems.md`.
@@ -11,7 +11,7 @@
 
 ### **1.1 Design Philosophy**
 
-The Core Encounter Engine is the heart of *Beware the Blacksite*, a universal interaction coordinator designed to solve "The Good Porn Games Problem." Its purpose is to generate dynamic, emergent encounters that are mechanically engaging and narratively satisfying, ensuring that erotic content is an integrated consequence of gameplay, not a static reward.
+The Encounter Engine is the heart of *Beware the Blacksite*, a universal interaction coordinator designed to solve "The Good Porn Games Problem." Its purpose is to generate dynamic, emergent encounters that are mechanically engaging and narratively satisfying, ensuring that erotic content is an integrated consequence of gameplay, not a static reward.
 
 Rather than relying on pre-scripted scenes, this engine creates encounters through the collision of autonomous entity psychologies. All interactions—from surviving a hostile Subject, to navigating a social conflict with a corrupted Companion, to engaging in a multi-round intimate encounter—flow through this single, unified system. The engine's job is to coordinate the intentions of all Characters, Subjects, and Hazards, sequence their actions based on psychological urgency, and resolve the outcomes.
 
@@ -346,7 +346,7 @@ The decision to set the `continue_encounter` flag to `false` is driven by an ent
 
 ### **7.1 Overview**
 
-The Psychology Interface is the formal "API contract" between the `Core_Encounter_Engine` and any entity participating in an encounter. It defines the standardized information that is exchanged between the engine and an entity's `Psychology System`. This strict interface allows the engine to remain a modular, content-agnostic coordinator, capable of managing any entity that can "speak" this language.
+The Psychology Interface is the formal "API contract" between the `Encounter_Engine` and any entity participating in an encounter. It defines the standardized information that is exchanged between the engine and an entity's `Psychology System`. This strict interface allows the engine to remain a modular, content-agnostic coordinator, capable of managing any entity that can "speak" this language.
 
 The core flow is simple: the engine provides a comprehensive **`EncounterContext`** (the input), and the `Psychology System` performs any necessary world-state queries before providing an actionable **`PsychologyOutput`** (the output).
 
