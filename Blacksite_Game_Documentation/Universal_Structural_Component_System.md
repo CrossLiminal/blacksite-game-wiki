@@ -348,6 +348,20 @@ clitoris_01: (conditional - if present)
         arousal_response: 5
     }
 
+urethra_01: (universal)
+    zone: "Groin"
+    capabilities: []
+    receptivities: [ACCEPTS_PENETRATION, ACCEPTS_MANIPULATION]
+    properties: {
+        capacity: 1,
+        depth: 4,
+        elasticity: 2,
+        sensitivity: 4,
+        texture: "Smooth",
+        features: [],
+        lubrication: 1
+    }
+
 testicles_01: (conditional - if present)
     zone: "Groin"
     capabilities: []
@@ -469,6 +483,7 @@ INTERACTIVE COMPONENTS:
 - feet_01 (standard template)
 - vagina_01 (present)
 - clitoris_01 (present)
+- urethra_01 (standard template)
 - anus_01 (standard template)
 - nipples_01 (standard template with features: ["Breasts"])
 - surface_chest (with features: ["Breasts", "D_Cup"])
